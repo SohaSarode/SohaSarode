@@ -1,0 +1,28 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load data from a CSV file
+df = pd.read_csv('data.csv')
+
+# Clean data
+df = df.dropna() # Remove any rows with missing data
+
+# Perform statistical analysis
+mean = df['column1'].mean()
+median = df['column1'].median()
+std_dev = df['column1'].std()
+
+# Create a visualization
+sns.set_style('whitegrid')
+sns.histplot(df['column1'], kde=False)
+plt.axvline(x=mean, color='red', label='Mean')
+plt.axvline(x=median, color='green', label='Median')
+plt.legend()
+plt.savefig('visualization.png')
+
+# Save cleaned data to a new CSV file
+df.to_csv('cleaned_data.csv', index=False)
+
+
+The Python script loads data from a CSV file, cleans it by removing any rows with missing data, performs statistical analysis on a specific column of the data, creates a visualization of the data distribution, and saves the cleaned data and visualization to separate files.
